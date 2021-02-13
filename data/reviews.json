@@ -1,0 +1,34 @@
+{
+  "reviews": [
+    {
+      "name": "Ammon Owens",
+      "title": "Founder, Plug Music",
+      "review": "Zac brought great energy to our project. The goal when he got onboard was to help us complete v1 of our app and he saw it to the finish line. He was able to quickly pick up our existing codebase and add the required features. He had strong React skills and also brought great ideas and alternatives for solving some of the technical and design problems we had.",
+      "quote": "He has strong React skills and also brought great ideas and alternatives for solving some of the technical and design problems we had."
+    },
+    {
+      "name": "Bill Roth",
+      "title": "Vice President, Gallagher",
+      "review": "Zac was a tremendous asset to my team as he made significant contributions in helping us improve various processes by leveraging technology. Zac is a very fast learner, and is able to acclimate himself to new material quickly.",
+      "quote": "Zac is a very fast learner, and is able to acclimate himself to new material quickly."
+    },
+    {
+      "name": "Chris Trecker",
+      "title": "Owner, Superior Seal Coating",
+      "review": "Every day that Zac worked I knew I would get one hundred and ten percent from him. He genuinely cared about the reputation and the success of Superior Seal Coating and it showed in his work and his attitude. In a business where a single mistake can cost thousands of dollars to repair, Zac’s jobs were always perfect. Any time I had a difficult job or a particular customer I would automatically send Zac.",
+      "quote": "Every day that Zac worked I knew I would get one hundred and ten percent from him."
+    },
+    {
+      "name": "Derek Drummond",
+      "title": "Senior Software Engineer",
+      "review": "The work he did for our Python API and MongoDB integration was critical for making the product a success. He asked all the right questions, admitted when he needed guidance and learned at a staggering pace. Zac will not disappoint when given the chance to prove his worth.",
+      "quote": "He asked all the right questions, admitted when he needed guidance and learned at a staggering pace."
+    },
+    {
+      "name": "Caroline Wilson",
+      "title": "Director of Admissions, Griffin School",
+      "review": "Zac connected well with our students and solidly prepared them for the AP Computer Science Principles exam. He was a dynamic and engaging teacher!",
+      "quote": "Zac connected well with our students and solidly prepared them for the AP Computer Science Principles exam."
+    }
+  ]
+}
