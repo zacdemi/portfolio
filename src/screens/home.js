@@ -3,33 +3,28 @@ import { StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
 import { Iphone } from "../components";
 
 import { Colors, Typography, Constants } from "../styles";
-import { Svg, Ellipse } from "../../Svg";
 import { Reviews, Projects } from "../components";
-import { reviews } from "../../data/reviews.json";
+
+const ellipseWidth = Constants.WIDTH * 2;
+const ellipseHeight = Constants.WIDTH * 2 * 0.6;
 
 const Home = () => {
-  const WIDTH = Constants.WIDTH;
-
   return (
-    <View style={styles.container}>
-      <View style={{ height: WIDTH * 0.6 + WIDTH / 6 }}>
-        <Svg height="auto">
-          <Ellipse
-            cx={WIDTH / 2}
-            cy={WIDTH / 6}
-            rx={WIDTH}
-            ry={WIDTH * 0.6}
-            fill={Colors.primary}
-          />
-        </Svg>
-      </View>
+    <>
+      <View style={styles.ellipse} />
       <View style={styles.headerContainer}>
         <Text style={Typography.mainHeader}>Zac Demi</Text>
         <Text style={Typography.subHeader}>
           React Native Developer | Austin, TX
         </Text>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingVertical: 50,
+          justifyContent: "center`",
+        }}
+      >
         <Text style={[styles.sectionHeader, { marginBottom: 50 }]}>
           Welcome! 👋🏼
         </Text>
@@ -41,24 +36,32 @@ const Home = () => {
           <Projects />
         </View>
         <Text style={styles.sectionHeader}>Employer Reviews</Text>
-        <View style={{ marginBottom: 30 }}>
-          <Reviews data={reviews} />
+        <View style={{ flex: 1 }}>
+          <Reviews />
         </View>
       </ScrollView>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   headerContainer: {
-    position: "absolute",
-    top: 125,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 100,
+    marginBottom: 60,
     width: "100%",
+    zIndex: 2,
+  },
+  ellipse: {
+    position: "absolute",
+    width: ellipseWidth,
+    height: ellipseHeight,
+    top: -ellipseHeight / 2.5,
+    left: -ellipseWidth / 4,
+    borderRadius: "50%",
+    backgroundColor: Colors.primary,
+    zIndex: 1,
   },
   sectionHeader: {
     ...Typography.sectionHeader,

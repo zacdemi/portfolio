@@ -2,12 +2,12 @@ import React from "react";
 import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
 
 import { Colors, Typography } from "../styles";
+import { reviews } from "../../data/reviews.json";
 
 const Reviews = (props) => {
-  console.log("container styles", props.containerStyles);
   return (
     <FlatList
-      data={props.data}
+      data={reviews}
       keyExtractor={(item) => item.toString()}
       horizontal
       contentContainerStyle={{ marginTop: 10 }}
