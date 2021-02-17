@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 
 import { Colors, Typography } from "../styles";
-import { Reviews, Projects } from "../components";
+import { Reviews, Projects, Social } from "../components";
 import { usePhoneDimensions } from "../hooks";
 
 const { width } = usePhoneDimensions();
@@ -37,6 +37,9 @@ const Home = () => {
           <Text style={styles.sectionHeader}>Reference Snippets</Text>
           <Reviews />
         </View>
+        <View>
+          <Social />
+        </View>
       </ScrollView>
     </>
   );
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
-    height: ellipseHeight - ellipseHeight / 2.5,
+    height: ellipseHeight - ellipseHeight / 2.5 - 25, // 25 is the height of the cureve arc
     width: "100%",
     zIndex: 2,
   },
@@ -67,7 +70,7 @@ const styles = StyleSheet.create({
   },
   welcome: { height: 80, marginBottom: 20 },
   projects: { marginBottom: 20 },
-  revews: { marginBottom: 20 },
+  reviews: { marginBottom: 30 },
 });
 
 export default Home;

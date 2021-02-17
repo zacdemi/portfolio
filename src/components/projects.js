@@ -13,7 +13,7 @@ import { Colors, Typography, Constants } from "../styles";
 
 const iconSize = 28;
 
-const projects = [
+const icons = [
   {
     name: "Avem",
     icon: (
@@ -60,7 +60,7 @@ const Button = ({ name, icon }) => {
 const Projects = (props) => {
   return (
     <View style={styles.buttonContainer}>
-      {projects.map((item, index) => {
+      {icons.map((item, index) => {
         return <Button name={item.name} icon={item.icon} />;
       })}
     </View>
