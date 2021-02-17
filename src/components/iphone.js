@@ -1,27 +1,29 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { Colors } from "../styles";
+import { usePhoneDimensions } from "../hooks";
+
+const { width, height, mobile } = usePhoneDimensions();
 
 const Iphone = (props) => {
   return (
-    <View
-      style={[
-        props.mobile ? styles.iphone : null,
-        { width: props.width, height: props.height },
-      ]}
-    >
+    <View style={[!mobile ? styles.iphone : null, styles.container]}>
       {props.children}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    width,
+    height,
+    backgroundColor: Colors.secondary,
+    overflow: "hidden",
+  },
   iphone: {
     borderColor: "black",
     borderWidth: 4,
     borderRadius: 38.5,
-    overflow: "hidden",
-    backgroundColor: Colors.secondary,
   },
 });
 

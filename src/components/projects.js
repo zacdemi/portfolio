@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexWrap: "wrap",
     flexDirection: "row",
+    marginHorizontal: 15,
   },
   buttonTitle: {
     ...Typography.base,

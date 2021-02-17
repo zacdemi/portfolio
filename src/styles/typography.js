@@ -1,5 +1,14 @@
 import { Colors } from "./index";
+import { usePhoneDimensions } from "../hooks";
+import { WIDTH } from "./constants";
+
 const appFont = "Helvetica";
+const { width } = usePhoneDimensions();
+
+// Thank you https://gist.github.com/nirsky/17b95fc07332bcce64cdb6916a4f271e#file-scaling_utils-js
+const scale = (size) => {
+  return (width / WIDTH) * size;
+};
 
 export const base = {
   fontFamily: appFont,
@@ -7,14 +16,14 @@ export const base = {
 
 export const mainHeader = {
   fontFamily: appFont,
-  fontSize: 77,
+  fontSize: scale(77),
   fontWeight: "bold",
   color: Colors.secondary,
 };
 
 export const subHeader = {
   fontFamily: appFont,
-  fontSize: 20,
+  fontSize: scale(20),
   fontWeight: "bold",
   color: Colors.secondary,
 };

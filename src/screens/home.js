@@ -1,12 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
-import { Iphone } from "../components";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 
-import { Colors, Typography, Constants } from "../styles";
+import { Colors, Typography } from "../styles";
 import { Reviews, Projects } from "../components";
+import { usePhoneDimensions } from "../hooks";
 
-const ellipseWidth = Constants.WIDTH * 2;
-const ellipseHeight = Constants.WIDTH * 2 * 0.6;
+const { width } = usePhoneDimensions();
+
+const ellipseWidth = width * 2;
+const ellipseHeight = width * 2 * 0.6;
 
 const Home = () => {
   return (
@@ -21,22 +23,18 @@ const Home = () => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingVertical: 50,
-          justifyContent: "center`",
+          paddingVertical: 25,
         }}
       >
-        <Text style={[styles.sectionHeader, { marginBottom: 50 }]}>
-          Welcome! 👋🏼
-        </Text>
-
-        <Text style={[styles.sectionHeader, { marginTop: 20 }]}>
-          React Native Projects
-        </Text>
-        <View style={{ marginTop: 20, marginBottom: 40, marginHorizontal: 15 }}>
+        <View style={styles.welcome}>
+          <Text style={styles.sectionHeader}>Welcome! 👋🏼</Text>
+        </View>
+        <View style={styles.projects}>
+          <Text style={styles.sectionHeader}>React Native Projects</Text>
           <Projects />
         </View>
-        <Text style={styles.sectionHeader}>Employer Reviews</Text>
-        <View style={{ flex: 1 }}>
+        <View style={styles.reviews}>
+          <Text style={styles.sectionHeader}>Reference Snippets</Text>
           <Reviews />
         </View>
       </ScrollView>
@@ -48,8 +46,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 100,
-    marginBottom: 60,
+    height: ellipseHeight - ellipseHeight / 2.5,
     width: "100%",
     zIndex: 2,
   },
@@ -66,7 +63,11 @@ const styles = StyleSheet.create({
   sectionHeader: {
     ...Typography.sectionHeader,
     marginLeft: 20,
+    marginBottom: 20,
   },
+  welcome: { height: 80, marginBottom: 20 },
+  projects: { marginBottom: 20 },
+  revews: { marginBottom: 20 },
 });
 
 export default Home;

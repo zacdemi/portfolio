@@ -10,7 +10,6 @@ const Reviews = (props) => {
       data={reviews}
       keyExtractor={(item) => item.toString()}
       horizontal
-      contentContainerStyle={{ marginTop: 10 }}
       showsHorizontalScrollIndicator={false}
       renderItem={({ item, index }) => {
         return (
@@ -30,7 +29,7 @@ const styles = StyleSheet.create({
   card: {
     width: 240,
     height: 300,
-    padding: 10,
+    paddingHorizontal: 10,
     marginHorizontal: 10,
   },
   text: {
