@@ -7,7 +7,7 @@ const HEIGHT = 896;
 
 const usePhoneDimensions = () => {
   const { width, height } = Dimensions.get("window");
-  if (width < 768) {
+  if (width <= 768) {
     return { width, height, mobile: true };
   } else {
     return { width: WIDTH, height: HEIGHT, mobile: false };

@@ -4,28 +4,28 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { Colors, Typography } from "../styles";
 import { Reviews, Projects, Social } from "../components";
 import { usePhoneDimensions } from "../hooks";
+import Animated, { Easing } from "react-native-reanimated";
 
-const { width } = usePhoneDimensions();
-
-const ellipseWidth = width * 2;
-const ellipseHeight = width * 2 * 0.6;
+const { width, height } = usePhoneDimensions();
 
 const Home = () => {
   return (
-    <>
-      <View style={styles.ellipse} />
-      <View style={styles.headerContainer}>
-        <Text style={Typography.mainHeader}>Zac Demi</Text>
-        <Text style={Typography.subHeader}>
-          React Native Developer | Austin, TX
-        </Text>
-      </View>
+    <View style={styles.container}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingVertical: 25,
+          paddingBottom: 25,
         }}
       >
+        <View style={styles.headerContainer}>
+          <View style={styles.ellipse} />
+          <View styles={styles.header}>
+            <Text style={Typography.mainHeader}>Zac Demi</Text>
+            <Text style={Typography.subHeader}>
+              React Native Developer | Austin, TX
+            </Text>
+          </View>
+        </View>
         <View style={styles.welcome}>
           <Text style={styles.sectionHeader}>Welcome! 👋🏼</Text>
         </View>
@@ -34,34 +34,38 @@ const Home = () => {
           <Projects />
         </View>
         <View style={styles.reviews}>
-          <Text style={styles.sectionHeader}>Reference Snippets</Text>
+          <Text style={styles.sectionHeader}>Employer Reviews</Text>
           <Reviews />
         </View>
         <View>
           <Social />
         </View>
       </ScrollView>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    width,
+    height,
+    backgroundColor: Colors.secondary,
+  },
   headerContainer: {
+    height: height * 0.31,
     justifyContent: "center",
     alignItems: "center",
-    height: ellipseHeight - ellipseHeight / 2.5 - 25, // 25 is the height of the cureve arc
     width: "100%",
-    zIndex: 2,
+    overflow: "hidden",
   },
   ellipse: {
     position: "absolute",
-    width: ellipseWidth,
-    height: ellipseHeight,
-    top: -ellipseHeight / 2.5,
-    left: -ellipseWidth / 4,
-    borderRadius: "50%",
+    top: -(width - height * 0.3),
+    width: width,
+    height: width,
+    borderRadius: width / 2,
     backgroundColor: Colors.primary,
-    zIndex: 1,
+    transform: [{ scaleX: 2 }],
   },
   sectionHeader: {
     ...Typography.sectionHeader,

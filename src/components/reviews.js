@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 
 import { Colors, Typography } from "../styles";
 import { reviews } from "../../data/reviews.json";
@@ -17,7 +17,8 @@ const Reviews = (props) => {
             <Text style={styles.text} adjustsFontSizeToFit>
               {item.quote}
             </Text>
-            <Text style={styles.signature}>- {item.name}</Text>
+            <Text style={styles.name}>- {item.name}</Text>
+            <Text style={styles.title}>{item.title}</Text>
           </View>
         );
       }}
@@ -27,8 +28,8 @@ const Reviews = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: 240,
-    height: 300,
+    width: 260,
+    height: 270,
     paddingHorizontal: 10,
     marginHorizontal: 10,
   },
@@ -37,10 +38,15 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: Colors.primary,
   },
-  signature: {
+  name: {
     ...Typography.base,
     fontSize: 25,
     fontWeight: "bold",
+    color: Colors.primary,
+  },
+  title: {
+    ...Typography.base,
+    fontSize: 15,
     color: Colors.primary,
   },
 });

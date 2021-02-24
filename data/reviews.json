@@ -13,12 +13,6 @@
       "quote": "Zac is a very fast learner, and is able to acclimate himself to new material quickly."
     },
     {
-      "name": "Chris Trecker",
-      "title": "Owner, Superior Seal Coating",
-      "review": "Every day that Zac worked I knew I would get one hundred and ten percent from him. He genuinely cared about the reputation and the success of Superior Seal Coating and it showed in his work and his attitude. In a business where a single mistake can cost thousands of dollars to repair, Zac’s jobs were always perfect. Any time I had a difficult job or a particular customer I would automatically send Zac.",
-      "quote": "Every day that Zac worked I knew I would get one hundred and ten percent from him."
-    },
-    {
       "name": "Derek Drummond",
       "title": "Senior Software Engineer",
       "review": "The work he did for our Python API and MongoDB integration was critical for making the product a success. He asked all the right questions, admitted when he needed guidance and learned at a staggering pace. Zac will not disappoint when given the chance to prove his worth.",
@@ -29,6 +23,12 @@
       "title": "Director of Admissions, Griffin School",
       "review": "Zac connected well with our students and solidly prepared them for the AP Computer Science Principles exam. He was a dynamic and engaging teacher!",
       "quote": "Zac connected well with our students and solidly prepared them for the AP Computer Science Principles exam."
+    },
+    {
+      "name": "Chris Trecker",
+      "title": "Owner, Superior Seal Coating",
+      "review": "Every day that Zac worked I knew I would get one hundred and ten percent from him. He genuinely cared about the reputation and the success of Superior Seal Coating and it showed in his work and his attitude. In a business where a single mistake can cost thousands of dollars to repair, Zac’s jobs were always perfect. Any time I had a difficult job or a particular customer I would automatically send Zac.",
+      "quote": "Zac’s jobs were always perfect. Any time I had a difficult job or a particular customer I would automatically send Zac."
     }
   ]
 }
