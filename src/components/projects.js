@@ -10,7 +10,7 @@ import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 
 import { Colors, Typography, Constants } from "../styles";
 
-const iconSize = 28;
+const iconSize = 26;
 
 const icons = [
   {
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   buttonTitle: {
     ...Typography.base,
-    fontSize: 25,
+    fontSize: 23,
     color: Colors.secondary,
     fontWeight: "bold",
     marginLeft: 10,
