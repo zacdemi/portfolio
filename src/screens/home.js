@@ -4,28 +4,96 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { Colors, Typography } from "../styles";
 import { Reviews, Projects, Social } from "../components";
 import { usePhoneDimensions } from "../hooks";
-import Animated, { Easing } from "react-native-reanimated";
+import Animated, {
+  useSharedValue,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate,
+} from "react-native-reanimated";
 
 const { width, height } = usePhoneDimensions();
+const visibleEllipse = height * 0.35;
 
 const Home = () => {
+  const translationY = useSharedValue(0);
+
+  const scrollHandler = useAnimatedScrollHandler((event) => {
+    translationY.value = event.contentOffset.y;
+  });
+
+  const animatedEllipseContainerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            translationY.value,
+            [0, 250, 300],
+            [0, -(height * 0.2), -(height * 0.2)],
+            Extrapolate.CLAMP
+          ),
+        },
+      ],
+    };
+  });
+
+  const animatedHeaderStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            translationY.value,
+            [0, 250],
+            [0, -height * 0.09],
+            Extrapolate.CLAMP
+          ),
+        },
+        {
+          scale: interpolate(
+            translationY.value,
+            [0, 250],
+            [1, 0.7],
+            Extrapolate.CLAMP
+          ),
+        },
+      ],
+    };
+  });
+
+  const animatedSubHeaderStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(
+        translationY.value,
+        [0, 250],
+        [1, 0],
+        Extrapolate.CLAMP
+      ),
+    };
+  });
+
   return (
     <View style={styles.container}>
-      <ScrollView
+      <Animated.View
+        style={[styles.ellipseContainer, animatedEllipseContainerStyle]}
+      >
+        <View style={styles.ellipse} />
+      </Animated.View>
+      <Animated.View style={[styles.header, animatedHeaderStyle]}>
+        <Text style={Typography.mainHeader}>Zac Demi</Text>
+        <Animated.Text style={[Typography.subHeader, animatedSubHeaderStyle]}>
+          React Native Developer | Austin, TX
+        </Animated.Text>
+      </Animated.View>
+      <Animated.ScrollView
+        style={{ flex: 1 }}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingBottom: 25,
         }}
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
       >
-        <View style={styles.headerContainer}>
-          <View style={styles.ellipse} />
-          <View styles={styles.header}>
-            <Text style={Typography.mainHeader}>Zac Demi</Text>
-            <Text style={Typography.subHeader}>
-              React Native Developer | Austin, TX
-            </Text>
-          </View>
-        </View>
+        <View style={{ height: visibleEllipse }} />
         <View style={styles.welcome}>
           <Text style={styles.sectionHeader}>Welcome! 👋🏼</Text>
         </View>
@@ -40,7 +108,8 @@ const Home = () => {
         <View>
           <Social />
         </View>
-      </ScrollView>
+        <View style={{ height: height * 0.2 }} />
+      </Animated.ScrollView>
     </View>
   );
 };
@@ -51,21 +120,33 @@ const styles = StyleSheet.create({
     height,
     backgroundColor: Colors.secondary,
   },
-  headerContainer: {
-    height: height * 0.31,
-    justifyContent: "center",
+  ellipseContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    overflow: "hidden",
+    height: visibleEllipse + 0.01,
     alignItems: "center",
     width: "100%",
-    overflow: "hidden",
+    zIndex: 1,
   },
   ellipse: {
     position: "absolute",
-    top: -(width - height * 0.3),
+    top: -(width - visibleEllipse),
     width: width,
     height: width,
     borderRadius: width / 2,
     backgroundColor: Colors.primary,
     transform: [{ scaleX: 2 }],
+  },
+  header: {
+    position: "absolute",
+    top: visibleEllipse / 3,
+    left: 0,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 2,
   },
   sectionHeader: {
     ...Typography.sectionHeader,
